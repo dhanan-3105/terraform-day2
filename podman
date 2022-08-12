@@ -1,0 +1,13 @@
+- hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+
+    - name: deploy nginx docker container
+      command: podman run -d  --name testnginx -p 8085:80 nginx
+    - name: list all containers
+      command: podman  ps -a
+    - name: verify service working
+      command: curl {{ansible_hostname}}:8085
+    - name: remove container
+      command : podman rm -f testnginx
