@@ -13,7 +13,8 @@
     - name: List bucket facts
       oci_object_storage_bucket_facts:
        namespace_name: '{{ output_namespace.namespace }}'
-       
+       compartment_id: ‘ …’
+
       register: result
     - name: Dump result
       debug:
