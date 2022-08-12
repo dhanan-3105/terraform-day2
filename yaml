@@ -1,0 +1,13 @@
+---
+ - hosts: localhost
+   become: true
+   tasks:
+   - name: install packages
+     yum: name={{item}} state=latest
+     loop:
+      - openssl-devel
+      - glibc-devel
+      - htop
+   - name : print message
+     debug:
+       msg: file created
