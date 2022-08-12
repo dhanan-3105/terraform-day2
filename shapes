@@ -1,0 +1,27 @@
+- name : List summary
+  collections:
+    - oracle.oci
+  connection: local
+  hosts: localhost
+  tasks:
+   - name: List availability domains
+     oci_identity_availability_domain_facts:
+     # required
+       compartment_id: "ocid1.tenancy.oc1..aaaaaaaasg7dmeaivai6jirpcbl23ms3z4aohftxghilvru5b2eceujefw6a"
+     register: result
+
+   - name: List shapes
+     oci_compute_shape_facts:
+      # required
+      compartment_id: "ocid1.compartment.oc1..aaaaaaaaoagcuorcyld46zephpaz76i6byurxremg45g43zko3deevmzphdq"
+      # optional
+     register: result1
+
+   - name : print all the AD's
+     debug:
+      msg: "{{ result }}"
+
+
+  - name : print all the shapes
+    debug:
+      msg: "{{ result1 }}"
