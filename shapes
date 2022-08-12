@@ -22,6 +22,6 @@
       msg: "{{ result }}"
 
 
-  - name : print all the shapes
-    debug:
+   - name : print all the shapes
+     debug:
       msg: "{{ result1 }}"
